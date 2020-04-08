@@ -1,0 +1,6 @@
+github.com/dmundt/go-firmata v1.0.0 h1:Vw19l56AX5ao3vFr5XT4H47/Blbymno0CON4sJtFN/A=
+github.com/dmundt/go-firmata v1.0.0/go.mod h1:pMgZ4yrcq1d7Q/x+slpXeZyuHfEy+hlM6l0HX3nGZh4=
+github.com/dmundt/log4go v1.0.0 h1:+Js95gMvx0KycDrB6ClCdICm9ojno/x4zusB2OXOvsc=
+github.com/dmundt/log4go v1.0.0/go.mod h1:aZq9BTF4VKSgARi79gdUu4funUnjdjG2hN97/4YUSHs=
+github.com/dmundt/serial v1.0.0 h1:1s5iiHpAEvMOud/22dqVCEt49/8S3P3RsWFMNIYOtAE=
+github.com/dmundt/serial v1.0.0/go.mod h1:oeCz8D+KgKYF31t24LVArwtt9WxjRIhOoBFkO28ys7g=
