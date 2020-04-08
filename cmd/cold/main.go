@@ -10,10 +10,10 @@ func main() {
 	if err == nil {
 		defer c.Close()
 
-		c.SetPinMode(2, firmata.Output)
-		c.SetPinMode(3, firmata.Output)
 		c.DigitalWrite(2, true)
 		c.DigitalWrite(3, true)
+		c.DigitalWrite(4, true)
+		c.DigitalWrite(5, true)
 
 		time.Sleep(2 * time.Second)
 	}
