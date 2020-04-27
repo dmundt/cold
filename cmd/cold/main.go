@@ -9,12 +9,12 @@ import (
 
 func tooglePin(c firmata.FirmataClient, rel int, dur int) {
 	// Toggle specific relay.
-	// /pin := rel + 1
+	pin := rel + 1
 	c.Log.Info("Close relay #%d", rel)
-	// c.SetPinMode(byte(pin), firmata.Output)
+	c.SetPinMode(byte(pin), firmata.Output)
 	time.Sleep(time.Duration(dur) * time.Second)
 	c.Log.Info("Open relay #%d", rel)
-	// c.SetPinMode(byte(pin), firmata.Input)
+	c.SetPinMode(byte(pin), firmata.Input)
 }
 
 func main() {
