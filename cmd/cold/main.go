@@ -9,7 +9,7 @@ import (
 
 func main() {
 	port := flag.String("port", "COM1", "serial port")
-	rel := flag.Int("rel", 1, "relay number [1..4]")
+	rel := flag.Int("pin", 1, "pin number [1..4]")
 	dur := flag.Int("dur", 1, "duration in [s]")
 	rate := flag.Int("rate", 57600, "baud rate")
 
