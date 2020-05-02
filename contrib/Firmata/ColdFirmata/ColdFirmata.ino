@@ -26,6 +26,7 @@
 #include <Servo.h>
 #include <Wire.h>
 #include <Firmata.h>
+#include <Button.h>
 
 #define I2C_WRITE                   B00000000
 #define I2C_READ                    B00001000
@@ -91,11 +92,29 @@ byte servoCount = 0;
 
 boolean isResetting = false;
 
+// Buttons
+Button button1(6);
+Button button2(7);
+Button button3(8);
+Button button4(9);
+
+struct But {
+  Button* button;
+  byte pin;
+} buts[] = {
+  { &button1, 2 },
+  { &button2, 3 },
+  { &button3, 4 },
+  { &button4, 5 },
+  { NULL, 0 }
+ };
+
 // Forward declare a few functions to avoid compiler errors with older versions
 // of the Arduino IDE.
 void setPinModeCallback(byte, int);
 void reportAnalogCallback(byte analogPin, int value);
 void sysexCallback(byte, byte, byte*);
+void checkButtons();
 
 /* utility functions */
 void wireWrite(byte data)
@@ -765,6 +784,11 @@ void setup()
   Firmata.attach(START_SYSEX, sysexCallback);
   Firmata.attach(SYSTEM_RESET, systemResetCallback);
 
+  button1.begin();
+  button2.begin();
+  button3.begin();
+  button4.begin();
+
   // to use a port other than Serial, such as Serial1 on an Arduino Leonardo or Mega,
   // Call begin(baud) on the alternate serial port and pass it to Firmata to begin like this:
   // Serial1.begin(57600);
@@ -779,6 +803,22 @@ void setup()
   systemResetCallback();  // reset to default config
 }
 
+void checkButtons() {
+  for (int i = 0; buts[i].button != NULL; i++) {
+    if (buts[i].button->toggled()) {
+      Serial.println("Button has been toggled");
+
+      pinMode(PIN_TO_DIGITAL(buts[i].pin), OUTPUT);
+      Firmata.setPinMode(buts[i].pin, OUTPUT);
+      
+      if (buts[i].button->read() == Button::PRESSED)
+        setPinValueCallback(PIN_TO_DIGITAL(buts[i].pin), LOW);
+      else
+        setPinValueCallback(PIN_TO_DIGITAL(buts[i].pin), HIGH);
+    }
+  }
+}
+
 /*==============================================================================
    LOOP()
   ============================================================================*/
@@ -789,6 +829,8 @@ void loop()
   /* DIGITALREAD - as fast as possible, check for changes and output them to the
      FTDI buffer using Serial.print()  */
   checkDigitalInputs();
+
+  checkButtons();
 
   /* STREAMREAD - processing incoming messagse as soon as possible, while still
      checking digital inputs.  */
