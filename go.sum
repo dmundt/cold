@@ -4,3 +4,5 @@ github.com/dmundt/log4go v1.0.0 h1:+Js95gMvx0KycDrB6ClCdICm9ojno/x4zusB2OXOvsc=
 github.com/dmundt/log4go v1.0.0/go.mod h1:aZq9BTF4VKSgARi79gdUu4funUnjdjG2hN97/4YUSHs=
 github.com/dmundt/serial v1.0.0 h1:1s5iiHpAEvMOud/22dqVCEt49/8S3P3RsWFMNIYOtAE=
 github.com/dmundt/serial v1.0.0/go.mod h1:oeCz8D+KgKYF31t24LVArwtt9WxjRIhOoBFkO28ys7g=
+golang.org/x/sys v0.0.0-20210403161142-5e06dd20ab57 h1:F5Gozwx4I1xtr/sr/8CFbb57iKi3297KFs0QDbGN60A=
+golang.org/x/sys v0.0.0-20210403161142-5e06dd20ab57/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
